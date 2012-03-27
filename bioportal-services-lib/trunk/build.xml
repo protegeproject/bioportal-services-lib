@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- ====================================================================== 
+     Mar 27, 2012 11:37:50 AM                                                        
+
+     bioportal-services-lib    
+     The Bioportal Services Library - gives java access to the restful BioPortal servlets.
+                   
+     tredmond                                                                
+     ====================================================================== -->
+<project name="bioportal-services-lib" default="jar">
+	<property name="build"   location="./build"/>
+	<property name="classes" location="${build}/classes"/>
+	
+	<target name="init">
+		<mkdir dir="${classes}"/>
+	</target>
+	
+	<target name="compile" depends = "init">
+		<javac srcdir="./src" debug="true" destdir="${classes}" includeantruntime="false">
+			<classpath>
+				<fileset dir="./lib" includes="*.jar"/>
+		    </classpath>
+		</javac>
+	</target>
+
+    <target name="jar" depends="compile">
+    	<jar basedir="${classes}" destfile="${build}/bioportal-services-lib.jar"/>
+    </target>
+	
+	<target name="clean">
+		<delete dir="${build}"/>
+	</target>
+
+</project>
