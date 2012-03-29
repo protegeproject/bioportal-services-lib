@@ -72,8 +72,8 @@ public class BioportalOntologyList {
 
 	public static void main(String[] args) {
 		BioportalOntologyList c = new BioportalOntologyList();
-		String urlStr = "http://rest.bioontology.org/bioportal/ontologies";
-		//  String urlStr = "http://stagerest.bioontology.org/bioportal/ontologies";
+		// String urlStr = "http://rest.bioontology.org/bioportal/ontologies";
+		String urlStr = "http://stagerest.bioontology.org/bioportal/ontologies";
 
 		try {
 			List<OntologyBean> obList = c.getOntologyProperties(new URL(urlStr));
