@@ -1,7 +1,22 @@
 <suite name="TestNG Tests" >
-  <test name="Basic" >
+  <test name="BasicBioportalSearch" >
+    <parameter name="searchTerm"           value="Heart"/>
+    <parameter name="ontologyDisplayLabel" value="SNOMED Clinical Terms"/>
+    <parameter name="preferredName"        value="Entire heart"/>
+    <parameter name="recordType"           value="csynonym"/>
+    <parameter name="debug"                value="false"/>
     <classes>
-       <class name="org.ncbo.stanford.BasicTests" />
+       <class name="org.ncbo.stanford.BioportalSearchTest" />
+    </classes>
+  </test>
+  
+  <test name="BasicOntology">
+    <parameter name="ontologyId"           value="44450"/>
+    <parameter name="displayLabel"         value="Biomedical Resource Ontology"/>
+    <!-- no download location? -->
+    <parameter name="debug"                value="true"/>
+    <classes>
+       <class name="org.ncbo.stanford.BioportalOntologyTest" />
     </classes>
   </test>
 </suite>
