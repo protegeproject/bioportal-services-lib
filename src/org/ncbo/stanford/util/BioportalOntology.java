@@ -66,34 +66,4 @@ public class BioportalOntology {
 		}
 	}
 
-	public static void main(String[] args) {
-		BioportalOntology c = new BioportalOntology();
-
-	//	String urlStr = "http://rest.bioontology.org/bioportal/ontologies/39002";
-	//	String urlStr = "http://stagerest.bioontology.org/bioportal/ontologies/39002";
-	//	String urlStr = "http://rest.bioontology.org/bioportal/ontologies/41009";
-		String urlStr = "http://rest.bioontology.org/bioportal/ontologies/40403";
-		try {
-			OntologyBean ob = c.getOntologyProperties(new URL(urlStr));
-			System.out.println(ob.getOntologyId() + " " + ob.getId() + " " + ob.getDisplayLabel());
-			boolean isView = ob.isView();
-			System.out.println("Is view: " + isView);
-			if (isView) {
-				System.out.println("\tIs view on ontology version ids: " + ob.getViewOnOntologyVersionId());
-			}
-			List<Integer> hasViews = ob.getHasViews();
-			if ( ! hasViews.isEmpty()) {
-				System.out.println("Has views: ");
-				for (Integer viewId : hasViews) {
-					System.out.println("\t" + viewId);
-				}
-			}
-			else {
-				System.out.println("Has NO views defined!");
-			}
-		} catch (MalformedURLException e) {
-			e.printStackTrace();
-		}
-	}
-
 }
