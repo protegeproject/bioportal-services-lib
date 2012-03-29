@@ -1,0 +1,7 @@
+<suite name="TestNG Tests" >
+  <test name="Basic" >
+    <classes>
+       <class name="org.ncbo.stanford.BasicTests" />
+    </classes>
+  </test>
+</suite>

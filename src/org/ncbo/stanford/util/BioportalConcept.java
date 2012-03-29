@@ -81,7 +81,7 @@ public class BioportalConcept {
 		BioportalConcept c = new BioportalConcept();
 		String urlStr = "http://rest.bioontology.org/bioportal/concepts/39002/BRO:Resource";  //production
 		//String urlStr = "http://stagerest.bioontology.org/bioportal/concepts/39002/BRO:Resource"; //stage
-		//String urlStr = "http://rest.bioontology.org/bioportal/concepts/44333/root";
+		// String urlStr = "http://rest.bioontology.org/bioportal/concepts/44333/root";
 		try {
 			ClassBean cb = c.getConceptProperties(new URL(urlStr));
 			System.out.println(cb.getFullId() + " " + cb.getId() + " " + cb.getLabel() );

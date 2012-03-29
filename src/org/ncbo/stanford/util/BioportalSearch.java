@@ -48,29 +48,4 @@ public class BioportalSearch {
 		return url.openStream();
 	}
 
-	public static void main(String[] args) {
-		BioportalSearch sd = new BioportalSearch();
-		String urlStr = "http://rest.bioontology.org/bioportal/search/Gene";
-		//String urlStr = "http://rest.bioontology.org/bioportal/search/Gene?pagesize=10";
-		//String urlStr = "http://stagerest.bioontology.org/bioportal/search/Myocardial%20Infarct?pagesize=20&pagenum=1";
-		//1353 - Snomed
-		//String urlStr = "http://stagerest.bioontology.org/bioportal/search/epidermolysis%20bullosa%20acquisita?ontologyids=1353";
-		//String urlStr = "http://stagerest.bioontology.org/bioportal/search/ep%20bu%20ac?ontologyids=1353";
-		//String urlStr = "http://stagerest.bioontology.org/bioportal/search/C1304233?ontologyids=1353&includeproperties=1";
-		//String urlStr = "http://stagerest.bioontology.org/bioportal/search/195591003?ontologyids=1353";
-
-		try {
-			Page p = sd.getSearchResults(new URL(urlStr));
-			SearchResultListBean data = p.getContents();
-			for (SearchBean searchBean : data.getSearchResultList()) {
-				System.out.println(searchBean.getPreferredName() + "\t" + searchBean.getRecordType() + "\t" + searchBean.getContents() +
-				        "\t" + searchBean.getOntologyDisplayLabel());
-			}
-		} catch (MalformedURLException e) {
-			e.printStackTrace();
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-	}
-
 }
