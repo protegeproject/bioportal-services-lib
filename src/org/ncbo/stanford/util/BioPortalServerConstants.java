@@ -15,7 +15,6 @@ public class BioPortalServerConstants {
     public final static String CONCEPT_ID_PARAM = "conceptid";
     public final static String API_KEY_PARAM = "apikey";
 
-    //public static final String BP_STAGE_PROTEGE_API_KEY = API_KEY_PARAM + "=d55623e8-66b5-4ae2-9c24-315f7a66fd4e";
     public static final String BP_PRODUCTION_PROTEGE_API_KEY = API_KEY_PARAM + "=8fadfa2c-47de-4487-a1f5-b7af7378d693";
 
 
