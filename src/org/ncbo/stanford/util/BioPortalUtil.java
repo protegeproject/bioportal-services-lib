@@ -88,6 +88,7 @@ public class BioPortalUtil {
             Byte isMetaDataOnly = ontologyBean.getIsMetadataOnly();
             String viewingRestriction = ontologyBean.getViewingRestriction();
             if (    (isMetaDataOnly == null || isMetaDataOnly == 0) &&
+                     (ontologyBean.getStatusId() == 3) &&  //parsed successfully
                      (viewingRestriction == null || viewingRestriction.equalsIgnoreCase("public")) ){
                 copy.add(ontologyBean);
             }
