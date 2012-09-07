@@ -1,4 +1,9 @@
 <suite name="TestNG Tests" >
+  <test name="OntologyList">
+  	<classes>
+  	</classes>
+  </test>
+
   <test name="BasicBioportalSearch" >
     <parameter name="searchTerm"           value="Heart"/>
     <parameter name="ontologyDisplayLabel" value="SNOMED Clinical Terms"/>
@@ -17,6 +22,7 @@
     <parameter name="debug"                value="true"/>
     <classes>
        <class name="org.ncbo.stanford.BioportalOntologyTest" />
+       <class name="org.ncbo.stanford.BioportalOntologyListTest"/>
     </classes>
   </test>
 </suite>
