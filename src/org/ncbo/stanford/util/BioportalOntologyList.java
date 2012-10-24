@@ -2,11 +2,8 @@ package org.ncbo.stanford.util;
 
 import java.io.IOException;
 import java.io.InputStream;
-import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLConnection;
-import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -59,6 +56,10 @@ public class BioportalOntologyList {
 		if(url.getProtocol().equals("http")) {
 			URLConnection conn;
 			conn = url.openConnection();
+
+			conn.setConnectTimeout(ApplicationProperties.getUrlConnectTimeout() * 1000);
+	        conn.setReadTimeout(ApplicationProperties.getUrlConnectReadTimeout() * 1000);
+
 			conn.setRequestProperty("Accept", "application/rdf+xml");
 			conn.addRequestProperty("Accept", "text/xml");
 			conn.addRequestProperty("Accept", "*/*");
