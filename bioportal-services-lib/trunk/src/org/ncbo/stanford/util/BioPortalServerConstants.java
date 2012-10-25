@@ -15,8 +15,9 @@ public class BioPortalServerConstants {
     public final static String CONCEPT_ID_PARAM = "conceptid";
     public final static String API_KEY_PARAM = "apikey";
 
-    public static final String BP_PRODUCTION_PROTEGE_API_KEY = API_KEY_PARAM + "=8fadfa2c-47de-4487-a1f5-b7af7378d693";
+    public final static String BP_PRODUCTION_PROTEGE_API_KEY_VALUE = "8fadfa2c-47de-4487-a1f5-b7af7378d693";
 
+    public static final String BP_PRODUCTION_PROTEGE_API_KEY = API_KEY_PARAM + "=" + BP_PRODUCTION_PROTEGE_API_KEY_VALUE;
 
     public static final String RECORD_TYPE_PREFERRED_NAME = "apreferredname";
     public static final String RECORD_TYPE_CONCEPT_ID = "bconceptid";
