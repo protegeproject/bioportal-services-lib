@@ -15,20 +15,20 @@ import org.ncbo.stanford.bean.search.Page;
 public class BioPortalUtil {
     private static Logger logger = Logger.getLogger(BioPortalUtil.class.toString());
 
-    public static String getConceptUrl(String bpRestBase, String ont, String conceptId) {
+    public static String getConceptUrl(String bpRestBase, String ont, String conceptId, String callSuffix) {
         try {
            String url = bpRestBase + BioPortalServerConstants.CONCEPTS_REST + "/" + ont + "?" +
                         BioPortalServerConstants.CONCEPT_ID_PARAM + "=" + HTMLUtil.encodeURI(conceptId);
-            url = getUrlWithDefaultSuffix(url);
+            url = addRestCallSuffixToUrl(url, callSuffix);
             return url;
         } catch (UnsupportedEncodingException e) {
             return null;
         }
     }
 
-    public static String getRootUrl(String bpRestBase, String ont) {
+    public static String getRootUrl(String bpRestBase, String ont, String callSuffix) {
         String url = bpRestBase + BioPortalServerConstants.CONCEPTS_REST + "/" + ont + "/" + BioPortalServerConstants.ROOTS_REST;
-        url = getUrlWithDefaultSuffix(url);
+        url = addRestCallSuffixToUrl(url, callSuffix);
         return url;
     }
 
@@ -66,19 +66,19 @@ public class BioPortalUtil {
      * Ontology methods
      */
 
-    public static List<OntologyBean> getOntologyList(String bpRestBase) {
-        BioportalOntologyList c = new BioportalOntologyList();
-
+    public static List<OntologyBean> getOntologyList(String bpRestBase, String callSuffix) {
         String urlStr = bpRestBase + BioPortalServerConstants.ONTOLOGIES_REST;
-        urlStr = BioPortalUtil.getUrlWithDefaultSuffix(urlStr);
-        URL url;
+        urlStr = addRestCallSuffixToUrl(urlStr, callSuffix);
+
+        URL url = null;
         try {
             url = new URL(urlStr);
         } catch (MalformedURLException e) {
             logger.log(Level.WARNING, "Invalid URL to retrieve ontologies from BP: " + bpRestBase + BioPortalServerConstants.ONTOLOGIES_REST);
             return null;
         }
-        return c.getOntologyProperties(url);
+
+        return new BioportalOntologyList().getOntologyProperties(url);
     }
 
     public static List<OntologyBean> getExporableOntologyList(List<OntologyBean> ontList) {
@@ -97,9 +97,10 @@ public class BioPortalUtil {
     }
 
 
-    public static OntologyBean getOntologyBean(String bpRestBase, String ontId) {
+    public static OntologyBean getOntologyBean(String bpRestBase, String ontId, String callSuffix) {
         String urlString = bpRestBase + BioPortalServerConstants.ONTOLOGIES_REST + "/" + ontId;
-        urlString = getUrlWithDefaultSuffix(urlString);
+        urlString = addRestCallSuffixToUrl(urlString, callSuffix);
+
         URL url = null;
         try {
             url = new URL(urlString);
