@@ -12,13 +12,11 @@ public class BioPortalViewOntologyMap {
 
 	public static final int NOT_A_VIEW = 0;
 	public static final int UNKNOWN = -1;
-
 	
 	/**
 	 * Returns a BioPortal ontology ID on which the view with id 
 	 * <code>viewId</code> is defined.
 	 * @param viewId
-	 * @return
 	 */
 	public int getViewOnOntologyId(int viewId) {
 		Integer viewOnOntologyId = viewIdOntologyIdMap.get(viewId);
@@ -29,7 +27,6 @@ public class BioPortalViewOntologyMap {
 	 * Returns the display label of the BioPortal ontology 
 	 * on which the view with id <code>viewId</code> is defined.
 	 * @param viewId
-	 * @return
 	 */
 	public String getViewOnOntologyDisplayLabel(int viewId) {
 		OntologyBean viewOnOntology = viewOntologyMap.get(viewId);
@@ -40,7 +37,6 @@ public class BioPortalViewOntologyMap {
 	 * Returns an ontology bean corresponding to a BioPortal ontology 
 	 * on which the view with id <code>viewId</code> is defined.
 	 * @param viewId
-	 * @return
 	 */
 	public OntologyBean getViewOnOntology(int viewId) {
 		return viewOntologyMap.get(viewId);
@@ -55,5 +51,4 @@ public class BioPortalViewOntologyMap {
 		viewIdOntologyIdMap.clear();
 		viewOntologyMap.clear();
 	}
-
 }
