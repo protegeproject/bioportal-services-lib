@@ -1,10 +1,9 @@
 package org.ncbo.stanford;
 
+import org.testng.AssertJUnit;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.List;
-
-import junit.framework.Assert;
 
 import org.ncbo.stanford.bean.ontology.OntologyBean;
 import org.ncbo.stanford.util.BioPortalServerConstants;
@@ -21,7 +20,7 @@ public class BioportalOntologyTest {
 
 		String urlStr = BioPortalServerConstants.BP_REST_BASE + "ontologies/" + ontologyId + "?" + BioPortalServerConstants.BP_PRODUCTION_PROTEGE_API_KEY;
 		OntologyBean ob = c.getOntologyProperties(new URL(urlStr));
-		Assert.assertEquals(displayLabel, ob.getDisplayLabel());
+		AssertJUnit.assertEquals(displayLabel, ob.getDisplayLabel());
 		if (debug) {
 			showOntology(ob);
 		}
