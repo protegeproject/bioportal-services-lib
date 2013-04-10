@@ -6,13 +6,13 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class HTMLUtil {
-	
+
 	private final static String PLACEHOLDER = " ... ";
 
 	public static String makeHTMLLinks(String text) {
 		return makeHTMLLinks(text, 0);
 	}
-	
+
 	public static String makeHTMLLinks(String text, int maxLength) {
 			Matcher matcher = Pattern.compile("(?i)(\\b(http://|https://|www.|ftp://|file:/|mailto:)\\S+)(\\s*)").matcher(text);
 
@@ -50,13 +50,13 @@ public class HTMLUtil {
 	 }
 
 	 public static String replaceEOF(String text) {
-		 return text.replaceAll("\n", "<br>");
+		 return text == null ? null : text.replaceAll("\n", "<br>");
 	 }
 
 	 public static String replaceSpaces(String text) {
 		 return text.replaceAll(" ", "%20");
 	 }
-	 
+
 	 public static String encodeURI(String text) throws UnsupportedEncodingException {
 		 return URLEncoder.encode(text, "UTF-8").toString().replaceAll("\\+", "%20");
 	 }

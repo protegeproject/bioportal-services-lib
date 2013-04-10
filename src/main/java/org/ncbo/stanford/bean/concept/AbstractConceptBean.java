@@ -16,9 +16,9 @@ public abstract class AbstractConceptBean {
 	protected List<String> definitions;
 	protected List<String> authors;
 	protected Byte isObsolete;
-	
+
 	protected Map<Object, Object> relations;
-	
+
 	public String getOntologyVersionId() {
 		return ontologyVersionId;
 	}
@@ -80,8 +80,8 @@ public abstract class AbstractConceptBean {
 		this.relations = relations;
 	}
 	@Override
-	public String toString() {	
-		return HTMLUtil.replaceEOF(label);
+	public String toString() {
+		return label == null ? "(label not set)" : HTMLUtil.replaceEOF(label);
 	}
 
 }
