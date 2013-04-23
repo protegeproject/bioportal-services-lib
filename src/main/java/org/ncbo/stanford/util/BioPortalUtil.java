@@ -15,9 +15,9 @@ import org.ncbo.stanford.bean.search.Page;
 public class BioPortalUtil {
     private static Logger logger = Logger.getLogger(BioPortalUtil.class.toString());
 
-    public static String getConceptUrl(String bpRestBase, String ont, String conceptId, String callSuffix) {
+    public static String getConceptUrl(String bpRestBase, String ontVersionId, String conceptId, String callSuffix) {
         try {
-           String url = bpRestBase + BioPortalServerConstants.CONCEPTS_REST + "/" + ont + "?" +
+           String url = bpRestBase + BioPortalServerConstants.CONCEPTS_REST + "/" + ontVersionId + "?" +
                         BioPortalServerConstants.CONCEPT_ID_PARAM + "=" + HTMLUtil.encodeURI(conceptId);
             url = addRestCallSuffixToUrl(url, callSuffix);
             return url;
@@ -86,16 +86,14 @@ public class BioPortalUtil {
         ArrayList<OntologyBean> copy = new ArrayList<OntologyBean>();
         for (OntologyBean ontologyBean : ontList) {
             Byte isMetaDataOnly = ontologyBean.getIsMetadataOnly();
-            String viewingRestriction = ontologyBean.getViewingRestriction();
             if (    (isMetaDataOnly == null || isMetaDataOnly == 0) &&
                      (ontologyBean.getStatusId() == 3) &&  //parsed successfully
-                     (viewingRestriction == null || viewingRestriction.equalsIgnoreCase("public")) ){
+                     (ontologyBean.isPublic()) ){
                 copy.add(ontologyBean);
             }
         }
         return copy;
     }
-
 
     public static OntologyBean getOntologyBean(String bpRestBase, String ontId, String callSuffix) {
         String urlString = bpRestBase + BioPortalServerConstants.ONTOLOGIES_REST + "/" + ontId;

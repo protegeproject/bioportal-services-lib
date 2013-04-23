@@ -432,4 +432,27 @@ public class OntologyBean {
     public void setViewingRestriction(String viewingRestriction) {
         this.viewingRestriction = viewingRestriction;
     }
+
+    public boolean isPublic() {
+        String viewingRestriction = getViewingRestriction();
+        return viewingRestriction == null || "public".equalsIgnoreCase(viewingRestriction);
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == null || !(obj instanceof OntologyBean)) {
+            return false;
+        }
+        OntologyBean ob2 = (OntologyBean) obj;
+        Integer id1 = getId();
+        Integer id2 = ob2.getId();
+        return (id1 == null && id2 == null) || (id1 != null && id2 != null & id1.equals(id2));
+    }
+
+    @Override
+    public int hashCode() {
+        Integer idt  = getId();
+        return idt ==  null ? 42 : idt;
+    }
+
 }

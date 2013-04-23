@@ -50,7 +50,7 @@ public class BioportalConcept {
 		try {
 			is = getInputStream(conceptURL);
 		} catch (IOException e) {
-			log.log(Level.WARNING, "Exception caught talking to bioportal", e);
+			log.log(Level.WARNING, "Error while accessing BioPortal at: " + conceptURL +". Message: " + e.getMessage());
 		}
 		if (is == null) { return null; }
 		Success success =  (Success) xstream.fromXML(is);
